@@ -1,6 +1,7 @@
 package cov.mjp.fc;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.AbstractMap;
 import java.util.Collections;
 import java.util.HashMap;
@@ -67,6 +68,10 @@ public class FieldCopier {
 			Field targetField = findCorrespondingField(targetFields, sourceField);
 			if (targetField == null) {
 				log.warn("No target field found for " + sourceField.getName());
+				continue;
+			}
+			if (Modifier.isFinal(targetField.getModifiers())) {
+				log.warn("The target field " + targetField.getName() + " is final, and so cannot be written to");
 				continue;
 			}
 			sourceFieldsToTargetFields.put(sourceField, targetField);
