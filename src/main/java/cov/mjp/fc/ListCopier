@@ -11,10 +11,10 @@ import org.springframework.beans.BeanUtils;
  * @author wangshihai
  * @date 2017年12月15日 上午9:21:19
  */
-public class ListCopyer<S, T> {
+public class ListCopier<S, T> {
 	private Class<T> targetType;
 
-	ListCopyer(Class<T> targetType) {
+	ListCopier(Class<T> targetType) {
 		this.targetType = targetType;
 	}
 
