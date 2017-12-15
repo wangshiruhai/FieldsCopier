@@ -1,0 +1,31 @@
+package com.zuma.website.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+/**
+ * @ClassName: CopyList
+ * @Description: 利用spring BeanUtils 方法复制 list集合
+ * @author wangshihai
+ * @date 2017年12月15日 上午9:21:19
+ */
+public class CopyList<S, T> {
+	private Class<T> targetType;
+
+	CopyList(Class<T> targetType) {
+		this.targetType = targetType;
+	}
+
+	List<T> copyList(List<S> src) {
+		List<T> target = new ArrayList<T>();
+		for (S s : src) {
+			T t = BeanUtils.instantiateClass(targetType);
+			BeanUtils.copyProperties(s, t);
+			target.add(t);
+		}
+		return target;
+	}
+
+}
