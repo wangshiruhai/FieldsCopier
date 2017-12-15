@@ -7,14 +7,14 @@ import org.springframework.beans.BeanUtils;
 
 /**
  * @ClassName: CopyList
- * @Description: 利用spring BeanUtils 方法复制 list集合
+ * @Description: 利用spring BeanUtils 方法copylist集合
  * @author wangshihai
  * @date 2017年12月15日 上午9:21:19
  */
-public class CopyList<S, T> {
+public class ListCopyer<S, T> {
 	private Class<T> targetType;
 
-	CopyList(Class<T> targetType) {
+	ListCopyer(Class<T> targetType) {
 		this.targetType = targetType;
 	}
 
